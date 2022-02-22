@@ -3,7 +3,7 @@ const bodyparser = require('body-parser');
 const mongoose   = require('mongoose');
 const path       = require('path');
 const app        = express();
-const port       = 4050;
+const port       = process.env.PORT;
 require('dotenv').config();
 
 //Requiring the dynamic route
@@ -18,7 +18,7 @@ mongoose.connect(process.env.DATABASE, {
 //Mongoose method to open a connection to the database
 mongoose.connection
     .on("open", () => {
-        console.log(`Mongoose Connection Open on port: ${port}`);
+        console.log(`Mongoose Connection Open on port: ${process.env.PORT}`);
     })
     .on("error", (err) => {
         console.log(`Connection error: ${err.message}`)
@@ -70,6 +70,6 @@ app.get('/success', (req, res) => {
 
 
 
-app.listen(port, () => {
-    console.log(`We are listening on port: ${port}`)
+app.listen(process.env.PORT || 4080, () => {
+    console.log(`We are listening on port: ${process.env.PORT}`)
 });
