@@ -39,6 +39,9 @@ app.use('/', formroute);
 
 
 //Routes for Static pages
+// app.get("/", (req, res) => {
+//     res.json({ status: "success", message: "Welcome To Testing API" });
+//   });
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/views/index.html')
 });
